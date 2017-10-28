@@ -1,0 +1,7 @@
+version: "2"
+services:
+  tomcat-systemd:
+    build: "./tomcat-systemd"
+    image: "tomcat-systemd"
+    volumes:
+      - "./cache-yum:/var/cache/yum"
