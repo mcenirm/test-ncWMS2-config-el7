@@ -18,3 +18,4 @@ services:
     volumes:
       - "./:/work"
     working_dir: "/work"
+    entrypoint: "wget -nd -P cache-downloads -i"
