@@ -1,4 +1,13 @@
-all : .stamp.built_image.web
+all : build
+
+SERVICES := tomcat-systemd web
+BUILD_STAMPS := $(SERVICES:%=.stamp.built_image.%)
+
+
+.PHONY : build
+.PHONY : $(SERVICES)
+
+build : $(BUILD_STAMPS)
 
 .stamp.built_image.web : .stamp.built_image.tomcat-systemd
 .stamp.built_image.web : web/server.xml
