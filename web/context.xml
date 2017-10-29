@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Context>
     <Parameter name="configDir" value="${catalina.base}/content/ncWMS2" override="false"/>
-    <Parameter name="paletteDirs" value="{catalina.base}/content/ncWMS2/palettes" override="false"/>
-    <Parameter name="styleDirs" value="{catalina.base}/content/ncWMS2/styles" override="false"/>
+    <Parameter name="paletteDirs" value="${catalina.base}/content/ncWMS2/palettes" override="false"/>
+    <Parameter name="styleDirs" value="${catalina.base}/content/ncWMS2/styles" override="false"/>
     <Parameter name="defaultPalette" value="seq-BuYl" override="false"/>
     <Parameter name="advertisedPalettes" value="" override="false"/>
 </Context>
