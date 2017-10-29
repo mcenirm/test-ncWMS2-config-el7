@@ -3,8 +3,6 @@ services:
   tomcat-systemd:
     build: "./tomcat-systemd"
     image: "tomcat-systemd"
-    volumes:
-      - "./cache-yum:/var/cache/yum"
   web:
     build: "./web"
     privileged: true
