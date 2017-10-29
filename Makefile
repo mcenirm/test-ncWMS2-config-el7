@@ -22,6 +22,11 @@ cache-downloads/% :
 
 .stamp.built_image.web : .stamp.built_image.tomcat-systemd
 .stamp.built_image.web : web/server.xml
+.stamp.built_image.web : web/ncWMS2.war
+.stamp.built_image.web : web/context.xml
+
+web/ncWMS2.war : .stamp.downloaded.ncWMS2.war
+	cp cache-downloads/ncWMS2.war $@
 
 .stamp.built_image.tomcat-systemd : tomcat-systemd/docker-prepare-tomcat-instance
 
