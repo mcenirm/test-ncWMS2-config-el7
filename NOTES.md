@@ -1,3 +1,5 @@
+Tomcat instance setup details from [Tomcat Multiple Instances RHEL 7 CentOS 7](https://notesbytom.wordpress.com/2017/03/10/tomcat-multiple-instances-rhel-7-centos-7/) at [_Notes by Tom_](https://notesbytom.wordpress.com/)
+
 1. Make images
     ```console
     make
