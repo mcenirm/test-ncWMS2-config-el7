@@ -24,6 +24,7 @@ cache-downloads/% :
 .stamp.built_image.web : web/server.xml
 .stamp.built_image.web : web/ncWMS2.war
 .stamp.built_image.web : web/context.xml
+.stamp.built_image.web : web/sysconfig-tomcat-web.txt
 
 web/ncWMS2.war : .stamp.downloaded.ncWMS2.war
 	cp cache-downloads/ncWMS2.war $@
