@@ -1,0 +1,47 @@
+#!/usr/bin/bash
+set -e
+set -u
+
+Usage () { cat >&2 <<EOF
+Usage: $0 name
+EOF
+}
+
+if [ $# -ne 1 ] ; then
+  Usage
+  exit 22
+fi
+
+INSTANCE=$1
+
+CATALINA_BASE=/var/lib/tomcats/$INSTANCE
+
+mimic () {
+  if [ -d "$1" ] ; then
+    mkdir -p -- "$2"
+    chown --reference="$1" -- "$2"
+    chmod --reference="$1" -- "$2"
+  else
+    cp --no-dereference --preserve=all -- "$1" "$2"
+  fi
+}
+
+mimic /usr/share/tomcat "$CATALINA_BASE"
+mimic /etc/tomcat "$CATALINA_BASE"/conf
+for x in \
+    Catalina{,/localhost} \
+    catalina.policy \
+    {catalina,log4j,logging}.properties \
+    {context,web}.xml \
+    ; do
+  mimic /etc/tomcat/"$x" "$CATALINA_BASE"/conf/"$x"
+done
+mimic /var/log/tomcat "$CATALINA_BASE"/logs
+mimic /var/lib/tomcat/webapps "$CATALINA_BASE"/webapps
+mimic /var/cache/tomcat/work "$CATALINA_BASE"/work
+mimic /var/cache/tomcat/temp "$CATALINA_BASE"/temp
+
+# TODOs
+# Add /etc/logrotate.d/tomcat@INSTANCE as needed
+
+systemctl enable tomcat@"$INSTANCE"
