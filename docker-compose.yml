@@ -5,3 +5,13 @@ services:
     image: "tomcat-systemd"
     volumes:
       - "./cache-yum:/var/cache/yum"
+  web:
+    build: "./web"
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+      - "./cache-web/logs:/var/lib/tomcats/web/logs"
+      - "./cache-web/work:/var/lib/tomcats/web/work"
+      - "./cache-web/temp:/var/lib/tomcats/web/temp"
+    ports:
+      - "8080:8080"

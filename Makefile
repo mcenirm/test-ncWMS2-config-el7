@@ -1,4 +1,7 @@
-all: .stamp.built_image.tomcat-systemd
+all : .stamp.built_image.web
+
+.stamp.built_image.web : .stamp.built_image.tomcat-systemd
+.stamp.built_image.web : web/server.xml
 
 .stamp.built_image.tomcat-systemd : tomcat-systemd/docker-prepare-tomcat-instance
 
