@@ -1,6 +1,6 @@
 all : build
 
-SERVICES := tomcat-systemd web
+SERVICES := tomcat-systemd web downloader
 BUILD_STAMPS := $(SERVICES:%=.stamp.built_image.%)
 
 

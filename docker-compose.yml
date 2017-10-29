@@ -13,3 +13,8 @@ services:
       - "./cache-web/temp:/var/lib/tomcats/web/temp"
     ports:
       - "8080:8080"
+  downloader:
+    build: "./downloader"
+    volumes:
+      - "./:/work"
+    working_dir: "/work"
